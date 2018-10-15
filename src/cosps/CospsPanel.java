@@ -38,7 +38,7 @@ public class CospsPanel extends JPanel implements MouseListener {
 		w = getWidth();
 		h = getHeight();
 		drawRaster(12, g2d);
-		selectProgram();
+		//selectProgram();
 	}
 
 	private void drawRaster(int anz, Graphics g2d) {
@@ -73,7 +73,6 @@ public class CospsPanel extends JPanel implements MouseListener {
 				CospsFrame.contentPane = new JPanel();
 			}
 		}
-
 		return null;
 	}
 	@Override

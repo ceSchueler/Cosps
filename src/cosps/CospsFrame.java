@@ -1,17 +1,18 @@
 package cosps;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class CospsFrame extends JFrame {
+public class CospsFrame extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	public JPanel contentPane;
+	public static JPanel contentPane;
 	public static int Game = 0;
 	public static int Game2 = 1;
-	//public static JPanel Start = new InvaderStart();
+	public static JPanel Start = new CospsPanel();
 	public static JPanel Space = null;
 	public static JPanel Error = null;
 	public static int PanelX = 100;
@@ -32,10 +33,10 @@ public class CospsFrame extends JFrame {
 				}
 			}
 		});
-		//Timer t = new Timer(1, this);
-		//t.start();
+		Timer t = new Timer(10, this);
+		t.start();
 		initComponents();
-		//setFocusable(true);
+		setFocusable(true);
 	}
 
 	/**
@@ -60,70 +61,74 @@ public class CospsFrame extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
-// @Override
-	// public void actionPerformed(ActionEvent arg0) {
-	// 	if (Game2 != Game) {
-	// 		chooseGame();
-	// 		Game2 = Game;
-	// 	}
-	// }
 
-	// public int getGame() {
-	// 	return Game;
-	// }
-
-	// public void setGame(int game) {
-	// 	Game = game;
-	// 	chooseGame();
-	// }
-
-	// public static void resetGame(int game) {
-	// 	switch (Game) {
-	// 	case 0:
-	// 		Start = null;
-	// 		break;
-	// 	case 1:
-	// 		Space = null;
-	// 		break;
-	// 	default:
-	// 		Error = null;
-	// 		break;
-	// 	}
-	// }
-
-	// public void chooseGame() {
-	// 	PanelX = (int) getBounds().getLocation().getX(); //Wo Panel am Bildschirm erscheint.
-	// 	PanelY = (int) getBounds().getLocation().getY();
-	// 	JPanel temp=Start;
-	// 	switch (Game) {
-	// 	case 0:
-	// 		if (Start == null) {
-	// 			Start = new InvaderStart();
-	// 		}
-	// 		temp = Start;
-	// 		setBounds(PanelX, PanelY, 500, 200);
-	// 		setTitle("SpaceInvaders Start");
-	// 		break;
-	// 	case 1:
-	// 		if (Space == null) {
-	// 			Space = new CospsPanel();
-	// 		}
-	// 		temp = Space;
-	// 		setBounds(PanelX, PanelY, 1000, 600);
-	// 		setTitle("SpaceInvaders");
-	// 		break;
-
-	// 	default:
-	// 		if (Error == null) {
-	// 			Error = new Error();
-	// 		}
-	// 		temp = Error;
-	// 		setBounds(PanelX, PanelY, 200, 100);
-	// 		setTitle("Error");
-	// 	}
-	// 	setContentPane(temp);
-	// 	revalidate();
-	// }
+ 	public void actionPerformed(ActionEvent arg0) {
+		if (Game2 != Game) {
+			chooseGame();
+			Game2 = Game;
+		}
+	}
+		public void setGame ( int game){
+			Game = game;
+			chooseGame();
+		}
+	public int getGame() {
+		 	return Game;
 }
+
+		public static void resetGame ( int Game){
+			switch (Game) {
+				case 0:
+					Start = null;
+					break;
+				case 1:
+					Space = null;
+					break;
+				default:
+					Error = null;
+					break;
+			}
+		}
+
+			 public void chooseGame() {
+			 	PanelX = (int) getBounds().getLocation().getX(); //Wo Panel am Bildschirm erscheint.
+			 	PanelY = (int) getBounds().getLocation().getY();
+			 	JPanel temp=Start;
+			 	switch (Game) {
+			 	case 0:
+			 		if (Start == null) {
+			 			Start = new CospsPanel();
+			 		}
+			 		temp = Start;
+			 		setBounds(PanelX, PanelY, 500, 200);
+			 		setTitle("SpaceInvaders Start");
+			 		break;
+			 	case 1:
+			 		if (Space == null) {
+			 			Space = new CospsPanel();
+			 		}
+			 		temp = Space;
+			 		setBounds(PanelX, PanelY, 1000, 600);
+			 		setTitle("SpaceInvaders");
+			 		break;
+
+			 	default:
+//			 		if (Error == null) {
+//			 			Error = new Error();
+//			 		}
+//			 		temp = Error;
+//			 		setBounds(PanelX, PanelY, 200, 100);
+//			 		setTitle("Error");
+			 	}
+			 	setContentPane(temp);
+			 	revalidate();
+
+			 }
+
+
+	 	}
+
+
+
 
 
