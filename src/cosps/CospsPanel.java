@@ -22,12 +22,13 @@ public class CospsPanel extends JPanel implements MouseListener {
 	public int[] x = new int[n];
 	public boolean[] selected=new boolean[n];
 	public Stroke a = new BasicStroke();
+	public MouseEvent e;
 
 	/**
 	 * Create the panel.
 	 */
 	public CospsPanel() {
-
+    addMouseListener(this);
 	}
 
 	@Override
@@ -38,7 +39,7 @@ public class CospsPanel extends JPanel implements MouseListener {
 		w = getWidth();
 		h = getHeight();
 		drawRaster(12, g2d);
-		//selectProgram();
+		selectPanel();
 	}
 
 	private void drawRaster(int anz, Graphics g2d) {
@@ -62,18 +63,17 @@ public class CospsPanel extends JPanel implements MouseListener {
 			}
 
 	}
-	public JPanel selectProgram(MouseEvent e){
+	public void selectPanel(){
 		mouseX=getX();
 		mouseY=getY();
 		for (int i = 0; i <x.length; i++) {
-			if(mouseX>x[i]&&mouseX<x[i]+Rectw&&mouseY>y[i]&&mouseY<y[i]+Recth){
-				selected[i]=true;
+			if (mouseX > x[i] && mouseX < x[i] + Rectw && mouseY > y[i] && mouseY < y[i] + Recth) {
+				selected[i] = true;
 			}
-			if(selected[i]){
+			if (selected[i]) {
 				CospsFrame.contentPane = new JPanel();
 			}
 		}
-		return null;
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {

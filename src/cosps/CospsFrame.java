@@ -36,7 +36,7 @@ public class CospsFrame extends JFrame implements ActionListener {
 		Timer t = new Timer(10, this);
 		t.start();
 		initComponents();
-		setFocusable(true);
+
 	}
 
 	/**
@@ -54,6 +54,7 @@ public class CospsFrame extends JFrame implements ActionListener {
 		contentPane.setLayout(null);
 	}
 	public CospsFrame() {
+		setFocusable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new CospsPanel();
