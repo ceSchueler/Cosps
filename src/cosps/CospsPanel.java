@@ -15,12 +15,12 @@ public class CospsPanel extends JPanel implements MouseListener {
 	public int Rectw = 50;
 	public int Recth = 50;
 	public int margin = 20;
-	public int mouseX=getX();
-	public int mouseY=getY();
+	public int mouseX = getX();
+	public int mouseY = getY();
 	public int n;
 	public int[] y = new int[n];
 	public int[] x = new int[n];
-	public boolean[] selected=new boolean[n];
+	public boolean[] selected = new boolean[n];
 	public Stroke a = new BasicStroke();
 	public MouseEvent e;
 
@@ -28,7 +28,7 @@ public class CospsPanel extends JPanel implements MouseListener {
 	 * Create the panel.
 	 */
 	public CospsPanel() {
-    addMouseListener(this);
+		addMouseListener(this);
 	}
 
 	@Override
@@ -39,6 +39,7 @@ public class CospsPanel extends JPanel implements MouseListener {
 		w = getWidth();
 		h = getHeight();
 		drawRaster(12, g2d);
+		//drawRaster(20,g2d);
 		selectPanel();
 	}
 
@@ -47,26 +48,47 @@ public class CospsPanel extends JPanel implements MouseListener {
 		int[] y = new int[n];
 		int[] x = new int[n];
 
-			 for (int i = 0; i < n; i++) {
-
-				 g2d.drawRect( x[i], y[i], Rectw, Recth);
-				 x[i]=(Rectw + margin) * i;
-                 if(x[i]>w-Rectw){
-					 x[i]=0;
-					 y[i] += Recth + 2*margin;
-					 i=0;
-				 n--;
-				 }else{
-
-				 }
+		for (int i = 0; i < n; i++) {
+			g2d.drawRect(x[i], y[i], Rectw, Recth);
+			x[i] = (Rectw + margin) * i;
+			if (x[i] > w - Rectw) {
+				x[i] = 0;
+				y[i] += Recth + 2 * margin;
+				i = 0;
+				n--;
+			} else {
 
 			}
 
+		}
+
 	}
-	public void selectPanel(){
-		mouseX=getX();
-		mouseY=getY();
-		for (int i = 0; i <x.length; i++) {
+
+	private void drawRaster2(int anz, Graphics g2d) {
+		int n = anz;
+		int[] y = new int[n];
+		int[] x = new int[n];
+
+		for (int i = 0; i < n; i++) {
+
+			x[i] = (Rectw + margin) * i;
+			g2d.drawRect(x[i], y[i], Rectw, Recth);
+			if (x[i] > w - Rectw) {
+				x[i] = 0;
+				y[i] += Recth + 2 * margin;
+				i = 0;
+				n--;
+			} else {
+			}
+
+		}
+
+	}
+
+	public void selectPanel() {
+		mouseX = getX();
+		mouseY = getY();
+		for (int i = 0; i < x.length; i++) {
 			if (mouseX > x[i] && mouseX < x[i] + Rectw && mouseY > y[i] && mouseY < y[i] + Recth) {
 				selected[i] = true;
 			}
@@ -75,6 +97,7 @@ public class CospsPanel extends JPanel implements MouseListener {
 			}
 		}
 	}
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
