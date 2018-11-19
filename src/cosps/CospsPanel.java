@@ -41,6 +41,7 @@ public class CospsPanel extends JPanel implements MouseListener {
 		drawRaster(12, g2d);
 		//drawRaster(20,g2d);
 		selectPanel();
+		System.out.println("LOL der Bunig is dumm!");
 	}
 
 	private void drawRaster(int anz, Graphics g2d) {
